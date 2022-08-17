@@ -1,0 +1,51 @@
+.burger {
+  margin: 0 auto
+}
+.burger__menu {
+  background-color: #d0902a;
+  width: 100%
+}
+.burger__settings {
+  width: 50%;
+  margin: 0 auto
+}
+.burger__menu-item {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between
+}
+.burger__item-text {
+  font-weight: bold;
+}
+.burger__button-add {
+  height: 20%;
+  position: relative;
+  top: 15px
+}
+.burger__price {
+  font-weight: bold;
+}
+.burger__price::before {
+  content: 'Current Price: ';
+  font-weight: normal;
+}
+@media (min-width: 1000px) and (min-height: 700px) {
+  .burger {
+      width: 700px;
+  }
+}
+
+@media (min-width: 500px) and (min-height: 401px) {
+  .burger {
+      width: 450px;
+      height: 420px;
+  }
+}
+
+@media (min-width: 500px) and (max-height: 400px) {
+  .burger {
+      width: 350px;
+      height: 420px;
+  }
+}
