@@ -18,13 +18,14 @@
 .burger__item-text {
   font-weight: bold;
 }
-.burger__button-add {
+.burger__button {
   height: 20%;
   position: relative;
   top: 15px
 }
 .burger__price {
   font-weight: bold;
+  text-align: center;
 }
 .burger__price::before {
   content: 'Current Price: ';

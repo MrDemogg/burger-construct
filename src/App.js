@@ -73,6 +73,44 @@ class App extends Component {
         console.log(this.state.fullprice + 5)
       }
     }
+    this.removeIngredient = (ingredientIndex) => {
+      let saladAdd = this.state.saladAdd;
+      let meatAdd = this.state.meatAdd;
+      let baconAdd = this.state.baconAdd;
+      let cheeseAdd = this.state.cheeseAdd;
+      saladAdd = true;
+      meatAdd = true;
+      baconAdd = true;
+      cheeseAdd = true;
+      this.setState({
+        saladAdd,
+        meatAdd,
+        baconAdd,
+        cheeseAdd
+      })
+      let ingredientRepeats = 0;
+      for (let item in this.state.ingredients) {
+        if (this.state.ingredients[item].class === Object.keys(this.state.price)[ingredientIndex]) {
+          ingredientRepeats++
+        }
+      }
+      if (ingredientRepeats !== 0) {
+        const ingredients = this.state.ingredients;
+        for (let item = 0; item < ingredients.length; item++) {
+          if (ingredients[item].class === Object.keys(this.state.price)[ingredientIndex]) {
+            ingredients.splice(item, 1)
+            item += 99
+          }
+        }
+        let fullprice = this.state.fullprice;
+        fullprice -= Object.values(this.state.price)[ingredientIndex]
+        this.setState({
+          fullprice,
+          ingredients
+        })
+        this.fullprice = fullprice
+      }
+    }
   }
   render() {
     return (
@@ -98,23 +136,23 @@ class App extends Component {
             <div className="burger__price">{this.fullprice} soms</div>
             <div className="burger__menu-item">
               <p className="burger__item-text">Salad</p>
-              <button className='burger__button-remove'>Less</button>
-              <button className='burger__button-add' onClick={() => this.addIngredient(0)}>More</button>
+              <button className='burger__button-remove burger__button' onClick={() => this.removeIngredient(0)}>Less</button>
+              <button className='burger__button-add burger__button' onClick={() => this.addIngredient(0)}>More</button>
             </div>
             <div className="burger__menu-item">
-              <p className="burger__item-text">Salad</p>
-              <button className='burger__bacon-remove'>Less</button>
-              <button className='burger__button-add' onClick={() => this.addIngredient(1)}>More</button>
+              <p className="burger__item-text">Cheese</p>
+              <button className='burger__bacon-remove burger__button' onClick={() => this.removeIngredient(1)}>Less</button>
+              <button className='burger__button-add burger__button' onClick={() => this.addIngredient(1)}>More</button>
             </div>
             <div className="burger__menu-item">
-              <p className="burger__item-text">Salad</p>
-              <button className='burger__button-remove'>Less</button>
-              <button className='burger__button-add' onClick={() => this.addIngredient(2)}>More</button>
+              <p className="burger__item-text">Meat</p>
+              <button className='burger__button-remove burger__button' onClick={() => this.removeIngredient(2)}>Less</button>
+              <button className='burger__button-add burger__button' onClick={() => this.addIngredient(2)}>More</button>
             </div>
             <div className="burger__menu-item">
-              <p className="burger__item-text">Salad</p>
-              <button className='burger__button-remove'>Less</button>
-              <button className='burger__button-add' onClick={() => this.addIngredient(3)}>More</button>
+              <p className="burger__item-text">Bacon</p>
+              <button className='burger__button-remove burger__button' onClick={() => this.removeIngredient(3)}>Less</button>
+              <button className='burger__button-add burger__button' onClick={() => this.addIngredient(3)}>More</button>
             </div>
           </div>
         </div>
